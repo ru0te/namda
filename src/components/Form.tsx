@@ -1,7 +1,7 @@
 import { useState, type SubmitEvent, type ChangeEvent } from "react";
 
 import type { DiscoverFilters, MediaType } from "../types/types";
-import { useDiscover } from "../api/hooks/useDiscover";
+import Results from "./Results";
 
 const GENRES: Record<MediaType, Record<string, number>> = {
   movie: {
@@ -34,7 +34,6 @@ const PROVIDERS: Record<string, number> = {
 function Form() {
   const [type, setType] = useState<MediaType>("movie");
   const [filters, setFilters] = useState<DiscoverFilters | null>(null);
-  const { data, isLoading, isError } = useDiscover(filters);
 
   function handleSubmit(e: SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -118,11 +117,7 @@ function Form() {
           </button>
         </form>
 
-        {isLoading && <p>Searching...</p>}
-        {isError && <p>Something went wrong.</p>}
-        {data?.map((item) => (
-          <div key={item.id}>{item.title || item.name}</div>
-        ))}
+        <Results filters={filters} />
       </div>
     </div>
   );

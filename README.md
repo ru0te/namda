@@ -1,75 +1,61 @@
-# React + TypeScript + Vite
+# Namda
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Namda helps you find something to watch without endless scrolling. Choose a
+movie or TV show, filter by genre, streaming provider, rating, and runtime, and
+get a list of matching titles.
 
-Currently, two official plugins are available:
+This is an open-source project for anyone who wants to explore the code,
+learn from it, or help improve it. The app works today, but there is plenty of
+room to optimize and extend it further if people want to contribute.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## For curious people
 
-## React Compiler
+The app is built with React and TypeScript. It uses TanStack Query to request
+and cache discovery results from TMDB. The main code lives in `src/`:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- `components/` contains the hero, search form, and result cards.
+- `api/` contains TMDB requests and query hooks.
+- `pages/` and `layouts/` compose the application screens.
+- `types/` contains the shared TypeScript types.
 
-## Expanding the ESLint configuration
+## Run locally
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+You will need Node.js and a TMDB API key.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+git clone <repository-url>
+cd namda
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Create a `.env` file in the project root:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```env
+VITE_TMDB_API_KEY=your_tmdb_api_key
 ```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Other useful commands:
+
+```bash
+npm run build    # Type-check and create a production build
+npm run lint     # Run ESLint
+npm run preview  # Preview the production build locally
+```
+
+## Contributing
+
+Bug fixes, accessibility improvements, performance work, design ideas, and
+new filters are welcome. Open an issue to discuss a larger change, or submit
+a pull request with a clear description of what changed and how it was tested.
+
+## Data attribution
+
+Namda uses the [TMDB API](https://developer.themoviedb.org/) for movie and TV
+metadata and images. This product uses the TMDB API but is not endorsed or
+certified by TMDB.

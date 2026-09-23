@@ -5,7 +5,7 @@ function NavBar() {
   return (
     <>
       <header>
-        <nav className="flex justify-between items-center my-4">
+        <nav className="flex justify-between items-center mt-4 mb-16">
           <a href="/">
             <img src={Logo} alt="" className="logo" />
           </a>

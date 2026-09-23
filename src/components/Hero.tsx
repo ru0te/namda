@@ -1,19 +1,34 @@
-import { useQuery } from "@tanstack/react-query";
+import { useEffect } from "react";
 
-import { fetchHeroImage } from "../api/functions/fetchHeroImage";
+import { useHeroImage } from "../api/hooks/useHeroImage";
 
-function Hero() {
-  const { data: image } = useQuery({
-    queryKey: ["hero-image"],
-    queryFn: fetchHeroImage,
-    staleTime: Infinity,
-    refetchOnWindowFocus: false,
-  });
+function Hero({ onReady }: { onReady: () => void }) {
+  const { data: image, isError } = useHeroImage();
+
+  useEffect(() => {
+    if (isError) onReady();
+  }, [isError, onReady]);
 
   return (
     <>
       <div className="hero">
-        <img src={image} alt="" className="hero-image" />
+        {image ? (
+          <img
+            src={image}
+            alt=""
+            className="hero-image"
+            decoding="async"
+            fetchPriority="high"
+            onError={onReady}
+            onLoad={onReady}
+          />
+        ) : (
+          <div className="hero-image hero-placeholder" role="status">
+            {isError
+              ? "Unable to load featured image"
+              : "Loading featured image..."}
+          </div>
+        )}
       </div>
     </>
   );

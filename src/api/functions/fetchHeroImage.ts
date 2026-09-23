@@ -17,7 +17,9 @@ export async function fetchHeroImage() {
   const withImages = results.filter(
     (m: { backdrop_path: any }) => m.backdrop_path,
   );
+  if (!withImages.length) throw new Error("No featured image found");
+
   const movie = withImages[Math.floor(Math.random() * withImages.length)];
 
-  return `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
+  return `https://image.tmdb.org/t/p/w1280${movie.backdrop_path}`;
 }
