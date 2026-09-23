@@ -32,6 +32,8 @@ Create a `.env` file in the project root:
 
 ```env
 VITE_TMDB_API_KEY=your_tmdb_api_key
+# Optional: defaults to NG
+VITE_TMDB_WATCH_REGION=NG
 ```
 
 Start the development server:

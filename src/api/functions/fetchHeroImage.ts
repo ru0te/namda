@@ -1,3 +1,5 @@
+import { WATCH_REGION } from "../tmdb";
+
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
 export async function fetchHeroImage() {
@@ -5,7 +7,7 @@ export async function fetchHeroImage() {
 
   const url =
     `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}` +
-    `&with_watch_providers=8|9|337&watch_region=US` +
+    `&with_watch_providers=8|9|337&watch_region=${WATCH_REGION}` +
     `&sort_by=popularity.desc&page=${page}`;
 
   const res = await fetch(url);

@@ -3,6 +3,7 @@ import type {
   DiscoverResponse,
   MediaItem,
 } from "../../types/types";
+import { WATCH_REGION } from "../tmdb";
 
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY as string;
 
@@ -13,7 +14,7 @@ export async function fetchDiscover(
 
   const params = new URLSearchParams({
     api_key: API_KEY,
-    watch_region: "US",
+    watch_region: WATCH_REGION,
     with_watch_monetization_types: "flatrate",
     with_watch_providers: provider || "8|9|337|1899|15|350",
     sort_by: "popularity.desc",
