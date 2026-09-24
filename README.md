@@ -1,12 +1,9 @@
 # Namda
 
-Namda helps you find something to watch without endless scrolling. Choose a
-movie or TV show, filter by genre, streaming provider, rating, and runtime, and
-get a list of matching titles.
-
-This is an open-source project for anyone who wants to explore the code,
-learn from it, or help improve it. The app works today, but there is plenty of
-room to optimize and extend it further if people want to contribute.
+Namda helps you find something to watch without endless scrolling. 
+This project is a focused app for finding movies and TV shows available on
+streaming services. It is designed to help narrow down choices quickly without
+endless scrolling.
 
 ## For curious people
 
@@ -49,12 +46,6 @@ npm run build    # Type-check and create a production build
 npm run lint     # Run ESLint
 npm run preview  # Preview the production build locally
 ```
-
-## Contributing
-
-Bug fixes, accessibility improvements, performance work, design ideas, and
-new filters are welcome. Open an issue to discuss a larger change, or submit
-a pull request with a clear description of what changed and how it was tested.
 
 ## Data attribution
 
