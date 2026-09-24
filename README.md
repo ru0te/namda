@@ -25,13 +25,16 @@ cd namda
 npm install
 ```
 
-Create a `.env` file in the project root:
+Create a `.env` file in the project root for the server-side TMDB key:
 
 ```env
-VITE_TMDB_API_KEY=your_tmdb_api_key
+TMDB_API_KEY=your_tmdb_api_key
 # Optional: defaults to US
 VITE_TMDB_WATCH_REGION=US
 ```
+
+For Netlify, add the same key as a site environment variable named `TMDB_API_KEY`.
+Do not expose the key in frontend code or public Vite environment variables.
 
 Start the development server:
 
@@ -46,6 +49,10 @@ npm run build    # Type-check and create a production build
 npm run lint     # Run ESLint
 npm run preview  # Preview the production build locally
 ```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
 
 ## Data attribution
 

@@ -3,9 +3,8 @@ import type {
   DiscoverResponse,
   MediaItem,
 } from "../../types/types";
-import { WATCH_REGION } from "../tmdb";
 
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY as string;
+const TMDB_ENDPOINT = import.meta.env.DEV ? "/api/tmdb" : "/.netlify/functions/tmdb";
 
 export async function fetchDiscover(
   filters: DiscoverFilters,
@@ -13,8 +12,9 @@ export async function fetchDiscover(
   const { type, genre, minRating, maxRuntime, provider } = filters;
 
   const params = new URLSearchParams({
-    api_key: API_KEY,
-    watch_region: WATCH_REGION,
+    mode: "discover",
+    type,
+    watch_region: import.meta.env.VITE_TMDB_WATCH_REGION || "US",
     with_watch_monetization_types: "flatrate",
     with_watch_providers: provider || "8|9|337|1899|15|350",
     sort_by: "popularity.desc",
@@ -25,9 +25,7 @@ export async function fetchDiscover(
   if (minRating) params.set("vote_average.gte", minRating);
   if (maxRuntime) params.set("with_runtime.lte", maxRuntime);
 
-  const res = await fetch(
-    `https://api.themoviedb.org/3/discover/${type}?${params}`,
-  );
+  const res = await fetch(`${TMDB_ENDPOINT}?${params}`);
   if (!res.ok) throw new Error("TMDB request failed");
 
   const data: DiscoverResponse = await res.json();
