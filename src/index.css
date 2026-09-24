@@ -76,6 +76,7 @@ body {
   from {
     background-position: 100% 0;
   }
+
   to {
     background-position: -100% 0;
   }
@@ -229,10 +230,45 @@ body {
 .card-provider {
   min-height: 1.5em;
   margin-top: 0;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   color: #d4d4d4;
   font-size: 0.75rem;
   font-weight: 600;
+}
+
+.card-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0 0.75rem 0.75rem;
+}
+
+.card-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.card-link:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.card-link-primary {
+  background: var(--primary);
+  color: white;
+}
+
+.card-link-secondary {
+  background: #2a2a2a;
+  color: #f5f5f5;
 }
 
 .card-skeleton {
@@ -270,6 +306,7 @@ body {
     opacity: 0;
     transform: translateY(14px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -280,12 +317,14 @@ body {
   from {
     background-position: 100% 0;
   }
+
   to {
     background-position: -100% 0;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .card-reveal,
   .skeleton-poster,
   .skeleton-title,
